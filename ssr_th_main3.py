@@ -15,14 +15,12 @@ path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+pin_id[i]+'.txt')
   print(path[i])
-#exit()
+#
 ton=[2,1,2,1,2,1]
 toff=[1,2,1,2,1,2]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
-#  print(qu[i])
-#exit()
 #
 th=[]
 for i in range(0,len(gpio)):
@@ -42,7 +40,7 @@ while True:
           print(th[i].name)
     else:
        continue
-#       print("go??.txt not found")
+#
   except KeyboardInterrupt:
     print("Keyboard Interrupt")
     GPIO.cleanup()
