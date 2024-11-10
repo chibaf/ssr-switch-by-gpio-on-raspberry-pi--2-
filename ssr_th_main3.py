@@ -7,21 +7,26 @@ import datetime
 from time import sleep
 import os
 
-pin_id1=str(11)
-path1='./go'+pin_id1+'.txt'
-pin_id2=str(18)
-path2='./go'+pin_id2+'.txt'
-t1on=1
-t1of=2
-t2on=2
-t2of=1
-
-q1 =queue.Queue()  # queue which stores a result of a thread
-q2 =queue.Queue()  # queue which stores a result of a thread
+gpio=[11,12,13,15,16,18]
+pin_id=[]
+for i in range(0,len(gpio)):
+  pin_id.append(str(gpio[i]))
+path=[]
+for i in range(0,len(gpio)):
+  path.append('./go'+pin_id[i]+'.txt')
+#  print(path[i])
+#exit()
+ton=[1,1,1,1,1,1]
+toff=[1,1,1,1,1,1]
+qu=[]
+for i in range(0,len(gpio)):
+  qu.append(queue.Queue())
+#  print(qu[i])
+#exit()
 #
 while True:
   try:
-    if threading.active_count()==3:
+    if threading.active_count()==len(gpio):
       continue
     elif threading.active_count()<3:
      is_file1=os.path.isfile(path1)
