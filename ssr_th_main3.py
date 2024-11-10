@@ -24,22 +24,21 @@ for i in range(0,len(gpio)):
 #  print(qu[i])
 #exit()
 #
+th=[]
+for i in range(0,len(gpio)):
+  th.append("")
 while True:
   try:
     if threading.active_count()==len(gpio):
       continue
-    elif threading.active_count()<3:
-     is_file1=os.path.isfile(path1)
-     if is_file1:
-       th1 = threading.Thread(target=ssr,args=(11,t1on,t1of,q1),name=pin_id1,daemon=True)
-       th1.start()
-       print(th1.name)
-     is_file2=os.path.isfile(path2)
-     if is_file2:
-       th2 = threading.Thread(target=ssr,args=(18,t2on,t2of,q2),name=pin_id2,daemon=True)
-       th2.start()
-       print(th2.name)
-     else:
+    elif threading.active_count()<len(gpio):
+      for i in range(0,len(gpio)):
+        is_file=os.path.isfile(path[i])
+        if is_file:
+          th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),name=pin_id[i],daemon=True)
+          th[i].start()
+          print(th[i].name)
+    else:
        continue
 #       print("go??.txt not found")
   except KeyboardInterrupt:
