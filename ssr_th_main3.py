@@ -14,10 +14,10 @@ for i in range(0,len(gpio)):
 path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+pin_id[i]+'.txt')
-#  print(path[i])
+  print(path[i])
 #exit()
-ton=[1,1,1,1,1,1]
-toff=[1,1,1,1,1,1]
+ton=[2,1,2,1,2,1]
+toff=[1,2,1,2,1,2]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
@@ -34,6 +34,8 @@ while True:
     elif threading.active_count()<len(gpio):
       for i in range(0,len(gpio)):
         is_file=os.path.isfile(path[i])
+        print(path[i])
+        print(is_file)
         if is_file:
           th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),name=pin_id[i],daemon=True)
           th[i].start()
