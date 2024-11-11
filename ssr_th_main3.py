@@ -14,10 +14,9 @@ for i in range(0,len(gpio)):
 path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+pin_id[i]+'.txt')
-  #print(path[i])
 #
-ton=[1,2,3,4,5,6]
-toff=[0,0,0,0,0,0]
+ton=[1,2,3,4,0,6]
+toff=[1,1,1,1,1,1]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
@@ -26,7 +25,7 @@ th=[]
 for i in range(0,len(gpio)):
   th.append("")
 for i in range(0,len(gpio)):
-  th[i]=threading.Thread(target=ssr,args=(gpio[i],0,0,qu[i]),name=pin_id[i],daemon=True)
+  th[i]=threading.Thread(target=ssr,args=(gpio[i],0,0,qu[i]),daemon=True)
   th[i].start()
 while True:
   try:
@@ -36,16 +35,15 @@ while True:
     elif threading.active_count()<len(gpio):
       for i in range(0,len(gpio)):
         is_file=os.path.isfile(path[i])
-        #print(path[i])
-        #print(is_file)
         if is_file:
           r=qu[i].get()
+          print("return="+str(r))
           if r==0:
+            print("GPIO No.="+str(gpio[i]))
             th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),name=pin_id[i],daemon=True)
             th[i].start()
           else:
             continue
-          #print(th[i].name)
     else:
        continue
 #
