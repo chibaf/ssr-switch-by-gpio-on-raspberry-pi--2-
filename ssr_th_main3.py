@@ -8,12 +8,9 @@ from time import sleep
 import os
 
 gpio=[11,12,13,15,16,18]
-pin_id=[]
-for i in range(0,len(gpio)):
-  pin_id.append(str(gpio[i]))
 path=[]
 for i in range(0,len(gpio)):
-  path.append('./go'+pin_id[i]+'.txt')
+  path.append('./go'+str(gpio[i])+'.txt')
 #
 ton=[1,2,3,4,0,6]
 toff=[1,1,1,1,1,1]
@@ -40,7 +37,7 @@ while True:
           print("return="+str(r))
           if r==0:
             print("GPIO No.="+str(gpio[i]))
-            th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),name=pin_id[i],daemon=True)
+            th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),daemon=True)
             th[i].start()
           else:
             continue
