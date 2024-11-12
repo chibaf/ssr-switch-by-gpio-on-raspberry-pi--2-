@@ -32,7 +32,6 @@ while True:
       for i in range(0,len(gpio)):
         is_file=os.path.isfile(path[i])
         if is_file:
-#          r=qu[i].get()
           if qu[i].get()==0:
             print("GPIO No.="+str(gpio[i]))
             th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),daemon=True)
