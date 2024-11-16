@@ -13,9 +13,9 @@ class ssr_sw:
     import os
     import time
     GPIO.output(self.ssr_pin, 1)
-#    print("SSR "+self.pin_id+" ON ("+str(ton)+"sec)\n")
+    print("SSR "+self.pin_id+" ON ("+str(ton)+"sec)\n")
     time.sleep(int(ton))
     GPIO.output(self.ssr_pin, 0)
-#    print("SSR "+self.pin_id+" OFF ("+str(tstop)+"sec)\n")
+    print("SSR "+self.pin_id+" OFF ("+str(tstop)+"sec)\n")
     time.sleep(int(tstop))
     return 
