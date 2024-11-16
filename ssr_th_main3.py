@@ -12,18 +12,17 @@ path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+str(gpio[i])+'.txt')
 #
-ton=[2,3,2,4,3,2]
+ton=[4,2,5,2,3,2]
 toff=[1,1,1,1,1,1]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
-#
 th=[]
 for i in range(0,len(gpio)):
   th.append("")
 for i in range(0,len(gpio)):
-  th[i]=threading.Thread(target=ssr,args=(gpio[i],0,0,qu[i]),daemon=True)
-  th[i].start()
+  qu[i].put(0)
+#
 while True:
   try:
     if threading.active_count()==len(gpio):
