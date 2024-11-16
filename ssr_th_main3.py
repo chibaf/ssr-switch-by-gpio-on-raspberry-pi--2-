@@ -12,8 +12,8 @@ path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+str(gpio[i])+'.txt')
 #
-ton=[4,2,5,2,3,2]
-toff=[1,1,1,1,1,1]
+ton=[2,1,2,1,2,1]
+toff=[1,2,1,2,1,2]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
