@@ -6,14 +6,13 @@ import RPi.GPIO as GPIO
 import datetime
 from time import sleep
 import os
+import random
 
 gpio=[11,12,13,15,16,18]
 path=[]
 for i in range(0,len(gpio)):
   path.append('./go'+str(gpio[i])+'.txt')
 #
-ton=[2,1,2,1,2,1]
-toff=[1,2,1,2,1,2]
 qu=[]
 for i in range(0,len(gpio)):
   qu.append(queue.Queue())
@@ -32,7 +31,9 @@ while True:
         is_file=os.path.isfile(path[i])
         if is_file:
           if qu[i].get()==0:
-            th[i]=threading.Thread(target=ssr,args=(gpio[i],ton[i],toff[i],qu[i]),daemon=True)
+            t_on=random.randrange(1,5,1)
+            t_off=random.randrange(1,5,1)
+            th[i]=threading.Thread(target=ssr,args=(gpio[i],t_on,t_off,qu[i]),daemon=True)
             th[i].start()
           else:
             continue
