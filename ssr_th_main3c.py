@@ -9,7 +9,7 @@ import os
 import random
 
 gpio=[11,12,13,15,16,18]
-to=[2,3,4,1,6,5]
+to=[2,3,4,2,6,1]
 ts=[1,1,1,1,1,1]
 path=[]
 for i in range(0,len(gpio)):
@@ -33,6 +33,7 @@ while True:
         is_file=os.path.isfile(path[i])
         if is_file:
           if qu[i].get()==0:
+            print(i)
             t_on=to[i]
             t_off=ts[i]
 #            t_on=random.randrange(1,4,1)

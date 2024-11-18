@@ -22,7 +22,7 @@ while True:
     elif threading.active_count()<len(gpio)+1:
       for i in range(0,len(gpio)):
         if qu[i].get()==0:
-          t_on=random.randrange(2,5,2)
+          t_on=random.randrange(2,5,1)
           t_off=random.randrange(1,5,1)
           th[i]=threading.Thread(target=ssr,args=(gpio[i],t_on,t_off,qu[i]),daemon=True)
           th[i].start()
