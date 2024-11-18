@@ -8,6 +8,8 @@ ssr_th_main3.py -> ssr_sw_th.py -> ssr_sw_class.py
 
 ## python3 ssr_th_main3b.py
 
+![IMG_4543](https://github.com/user-attachments/assets/9f3c8d12-f272-43cd-beef-6514c42de8d4)
+
 switching led via gpio - YouTube
 
 https://www.youtube.com/watch?v=vdC8aEVBHps
