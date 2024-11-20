@@ -8,7 +8,7 @@ class ssr_sw:
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(ssr_pin,GPIO.OUT)
     
-  def run(self,ton,tstop):
+  def run(self,ton,tstop,q):
     import RPi.GPIO as GPIO
     import os
     import time
@@ -18,4 +18,5 @@ class ssr_sw:
     GPIO.output(self.ssr_pin, 0)
     print("SSR "+self.pin_id+" OFF ("+str(tstop)+"sec)\n")
     time.sleep(int(tstop))
+    q.put(0)
     return 
