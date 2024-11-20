@@ -12,6 +12,7 @@ class ssr_sw:
     import RPi.GPIO as GPIO
     import os
     import time
+    q.put(1)
     GPIO.output(self.ssr_pin, 1)
     print("SSR "+self.pin_id+" ON ("+str(ton)+"sec)\n")
     time.sleep(int(ton))
