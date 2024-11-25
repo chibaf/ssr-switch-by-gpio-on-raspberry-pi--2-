@@ -27,7 +27,7 @@ while True:
           th[i]=threading.Thread(target=ssr,args=(gpio[i],t_on,t_off,qu[i]),daemon=True)
           th[i].start()
         else:
-            continue
+            qu[i].put(1)
     else:
        continue
 #
