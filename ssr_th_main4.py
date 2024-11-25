@@ -31,7 +31,7 @@ while True:
           th[i]=threading.Thread(target=ssrs[i].run,args=(t_on,t_off,qu[i]),daemon=True)
           th[i].start()
         else:
-            continue
+            qu[i].put(1)
     else:
        continue
 #
